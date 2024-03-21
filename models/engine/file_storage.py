@@ -1,8 +1,12 @@
 #!/usr/bin/python3
 
 import json
-import os
-
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 """This module serializes data in json format"""
 
 
@@ -20,16 +24,16 @@ class FileStorage():
 
     def new(self, obj):
         """ sets in __objects the obj with key <obj class name>.id"""
-        item = obj.__class__.__name__ + "." + obj.id
-        self.__objects[item] = obj
+        key = obj.__class__.__name__ + "." + obj.id
+        self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
 
         my_dict = {}
 
-        #for key, value in FileStrorage.__objects.items():
-            #my_dict[item] = value.to_dict()
+        for key, value in FileStorage.__objects.items():
+            my_dict[key] = value.to_dict()
 
         with open(FileStorage.__file_path, 'w', encoding="utf-8") as myFile:
             json.dump(my_dict, myFile)
