@@ -1,0 +1,14 @@
+footer {
+    background-color: #00FF00;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
